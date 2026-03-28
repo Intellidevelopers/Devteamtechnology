@@ -54,7 +54,10 @@
                     <p class="slide-up">I'm a full-stack developer specializing in building exceptional digital experiences that are fast, accessible, and visually stunning.</p>
                     <div class="hero-actions slide-up">
                         <button class="btn btn-primary hire-me-trigger">Work With Me</button>
-                        <a href="#projects" class="btn btn-secondary">View Projects</a>
+                        <a href="https://github.com/intellidevelopers" target="_blank" class="btn btn-github">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Follow on GitHub
+                        </a>
                     </div>
                 </div>
                 <div class="hero-image-wrapper slide-left">
@@ -80,6 +83,15 @@
                             <li><i data-lucide="check-circle" class="skill-icon"></i> Tailwind CSS</li>
                             <li><i data-lucide="check-circle" class="skill-icon"></i> MongoDB</li>
                             <li><i data-lucide="check-circle" class="skill-icon"></i> TypeScript</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Expo</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> C++</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Python</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Solidity</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Rust</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Golang</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> PHP</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Flutter</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Swift</li>
                         </ul>
                     </div>
                 </div>
@@ -128,10 +140,35 @@
         <!-- Contact Section -->
         <section id="contact" class="contact section">
             <div class="container">
-                <div class="contact-card slide-up">
-                    <h2 class="section-title">Let's work together</h2>
-                    <p>Have a project in mind? Reach out and let's discuss how I can help you bring your vision to life.</p>
-                    <button class="btn btn-primary hire-me-trigger">Say Hello</button>
+                <div class="contact-grid slide-up">
+                    <div class="contact-card">
+                        <h2 class="section-title">Let's work together</h2>
+                        <p>Have a project in mind? Reach out and let's discuss how I can help you bring your vision to life.</p>
+                        <button class="btn btn-primary hire-me-trigger">Say Hello</button>
+                    </div>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i data-lucide="mail" class="info-icon"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p><a href="mailto:hello@devteam.tech">devteamjtech@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="message-circle" class="info-icon"></i>
+                            <div>
+                                <h3>WhatsApp</h3>
+                                <p><a href="https://wa.me/2348109263500" target="_blank">+234 810-926-3500</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="clock" class="info-icon"></i>
+                            <div>
+                                <h3>Opening Hours</h3>
+                                <p>Always Open (24/7)</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -141,7 +178,9 @@
         <div class="container">
             <p>&copy; 2026 Devteam Technology. Built with passion and code.</p>
             <div class="social-links">
-                <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="#" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                </a>
                 <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
                 <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
             </div>
@@ -305,6 +344,11 @@
 
         // Fallback: Trigger hero animations immediately for better UX
         window.addEventListener('load', () => {
+            // Re-initialize icons for dynamically added content or just to be sure
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
             const heroElements = document.querySelectorAll('.hero .reveal-text, .hero .slide-up, .hero .slide-left, .hero.fade-in');
             heroElements.forEach(el => {
                 setTimeout(() => {
