@@ -165,13 +165,14 @@ body {
 }
 
 .btn-github {
-    background-color: #000000;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
+     background-color: #000000;
+     color: #ffffff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 10px;
+     border: 1px solid rgba(255, 255, 255, 0.1);
+ }
 
 .dark-mode .btn-github {
     background-color: #ffffff;
