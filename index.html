@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for cleaner UI -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="light-mode">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">DT.</a>
+            </div>
+            <nav class="nav" id="main-nav">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <button class="btn btn-primary hire-me-trigger desktop-only">Hire Me</button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Open menu">
+                    <i data-lucide="menu" class="menu-icon"></i>
+                    <i data-lucide="x" class="close-icon hidden"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-overlay" class="mobile-overlay">
+        <nav class="mobile-nav">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button class="btn btn-primary hire-me-trigger">Hire Me</button>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero fade-in">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="reveal-text">Building digital products, brands, and experiences.</h1>
+                    <p class="slide-up">I'm a full-stack developer specializing in building exceptional digital experiences that are fast, accessible, and visually stunning.</p>
+                    <div class="hero-actions slide-up">
+                        <button class="btn btn-primary hire-me-trigger">Work With Me</button>
+                        <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper slide-left">
+                    <img src="ceo.jpg" alt="Devteam Technology" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section">
+            <div class="container">
+                <h2 class="section-title reveal-text">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text slide-up">
+                        <p>With over 9 years of experience in web development, I have a passion for creating clean, user-centric interfaces. I love solving complex problems and turning ideas into reality through code.</p>
+                        <p>My stack includes React, React Native + Expo, Node.js, and modern CSS techniques to ensure high performance and great user experience.</p>
+                    </div>
+                    <div class="about-skills slide-up">
+                        <ul class="skills-list">
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> JavaScript</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> React Native</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Node.js</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> Tailwind CSS</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> MongoDB</li>
+                            <li><i data-lucide="check-circle" class="skill-icon"></i> TypeScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section">
+            <div class="container">
+                <h2 class="section-title reveal-text">Selected Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card slide-up">
+                        <div class="project-info">
+                            <h3>E-commerce Platform</h3>
+                            <p>A full-featured online store with payment integration and inventory management.</p>
+                            <div class="project-tags">
+                                <span>React</span>
+                                <span>Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card slide-up">
+                        <div class="project-info">
+                            <h3>Task Management App</h3>
+                            <p>A productivity tool designed to help teams collaborate and track progress in real-time.</p>
+                            <div class="project-tags">
+                                <span>Next.js</span>
+                                <span>Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card slide-up">
+                        <div class="project-info">
+                            <h3>Analytics Dashboard</h3>
+                            <p>Interactive data visualization tool for monitoring business performance metrics.</p>
+                            <div class="project-tags">
+                                <span>D3.js</span>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <div class="container">
+                <div class="contact-card slide-up">
+                    <h2 class="section-title">Let's work together</h2>
+                    <p>Have a project in mind? Reach out and let's discuss how I can help you bring your vision to life.</p>
+                    <button class="btn btn-primary hire-me-trigger">Say Hello</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Devteam Technology. Built with passion and code.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hire Me Modal -->
+    <div id="hire-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Hire Me</h2>
+                <button class="close-modal" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="hire-form" class="hire-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="project">Project Details</label>
+                    <textarea id="project" name="project" rows="4" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">Send Message</button>
+            </form>
+            <div id="form-success" class="form-success hidden">
+                <i data-lucide="check-circle" class="success-icon"></i>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+                <button class="btn btn-secondary close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            // Save preference
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+        }
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const menuIcon = mobileMenuBtn.querySelector('.menu-icon');
+        const closeIcon = mobileMenuBtn.querySelector('.close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileOverlay.classList.toggle('active');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        mobileOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                body.style.overflow = '';
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('hire-modal');
+        const triggers = document.querySelectorAll('.hire-me-trigger');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        const hireForm = document.getElementById('hire-form');
+        const successMessage = document.getElementById('form-success');
+
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                modal.classList.add('active');
+                mobileOverlay.classList.remove('active'); // Close mobile menu if open
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                body.style.overflow = 'hidden'; // Prevent scroll
+            });
+        });
+
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                body.style.overflow = '';
+                // Reset form state after close
+                setTimeout(() => {
+                    hireForm.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    hireForm.reset();
+                }, 300);
+            });
+        });
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Form Submission
+        hireForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate API call
+            const submitBtn = hireForm.querySelector('button');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            setTimeout(() => {
+                hireForm.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }, 1000);
+        });
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Stop observing once triggered
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // All elements that should animate on scroll
+        const animatedElements = document.querySelectorAll('.slide-up, .reveal-text, .slide-left, .fade-in');
+        
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Fallback: Trigger hero animations immediately for better UX
+        window.addEventListener('load', () => {
+            const heroElements = document.querySelectorAll('.hero .reveal-text, .hero .slide-up, .hero .slide-left, .hero.fade-in');
+            heroElements.forEach(el => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
