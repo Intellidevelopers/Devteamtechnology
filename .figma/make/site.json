@@ -1,0 +1,11 @@
+{
+  "title": "devteam",
+  "description": "This web application enhances website usability by auditing and optimizing UI/UX across devices, ensuring responsive design and consistent branding for improved user experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

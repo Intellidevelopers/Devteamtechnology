@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-orange: #F65A00;
+  --color-orange-hover: #d94d00;
+  --color-orange-pale: #FFF8F3;
+  --color-orange-tint: #fff0e6;
+  --color-navy: #071A26;
+  --color-navy-mid: #0f2e42;
+  --color-gray-body: #5a6472;
+  --color-gray-light: #f7f7f7;
+  --color-line: #E9E9E9;
+  --font-family-sans: 'Inter', sans-serif;
+  --radius-card: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #071A26;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #F65A00; border-radius: 4px; }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid #F65A00;
+  outline-offset: 2px;
+}
+
+/* Images never overflow */
+img {
+  max-width: 100%;
+  display: block;
+}
