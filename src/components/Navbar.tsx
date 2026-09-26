@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react'
-import type { Page } from '../App'
-
-interface Props {
-  currentPage: Page
-  navigate: (to: Page) => void
-}
+import { Menu, X } from 'lucide-react'
+import type { NavProps, Page } from '../App'
 
 const NAV_LINKS: { label: string; page: Page; anchor?: string }[] = [
   { label: 'Home', page: 'home' },
   { label: 'Services', page: 'home', anchor: 'services' },
   { label: 'Portfolio', page: 'portfolio' },
-  { label: 'About', page: 'home', anchor: 'about' },
+  { label: 'About', page: 'about' },
   { label: 'Contact', page: 'contact' },
 ]
 
-export default function Navbar({ currentPage, navigate }: Props) {
+export default function Navbar({ currentPage, navigate, openQuotation }: NavProps) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -24,7 +20,6 @@ export default function Navbar({ currentPage, navigate }: Props) {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  // Close mobile menu on resize past md
   useEffect(() => {
     const handler = () => { if (window.innerWidth >= 768) setOpen(false) }
     window.addEventListener('resize', handler)
@@ -44,17 +39,23 @@ export default function Navbar({ currentPage, navigate }: Props) {
   return (
     <>
       {/* Announcement bar */}
-      <div className="bg-orange-pale border-b border-line hidden md:block">
+      <div className="bg-navy/95 border-b border-white/5 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-2">
-          <span className="text-orange font-bold text-xs tracking-widest uppercase">Innovate · Build · Grow</span>
-          <span className="text-gray-body text-xs">Premium Software Engineering Agency based in Lagos, Nigeria</span>
+          <span className="text-orange font-bold text-[11px] tracking-[0.2em] uppercase">
+            Innovate · Build · Grow
+          </span>
+          <span className="text-white/40 text-[11px] tracking-wide">
+            Premium Software Engineering Agency based in Lagos, Nigeria
+            <span className="mx-2 text-white/20">·</span>
+            <span className="text-white/60 font-semibold">RC&#8209;9764498</span>
+          </span>
         </div>
       </div>
 
       {/* Main header */}
       <header
         className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
-          scrolled ? 'shadow-[0_2px_20px_rgba(0,0,0,0.08)]' : 'border-b border-line'
+          scrolled ? 'shadow-[0_2px_24px_rgba(0,0,0,0.07)]' : 'border-b border-line'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-[72px]">
@@ -67,9 +68,9 @@ export default function Navbar({ currentPage, navigate }: Props) {
             <div className="w-9 h-9 md:w-10 md:h-10 bg-orange rounded-xl flex items-center justify-center flex-shrink-0">
               <span className="text-white font-black text-lg md:text-xl leading-none select-none">D</span>
             </div>
-            <div className="flex flex-col items-start leading-none gap-0.5">
+            <div className="flex flex-col items-start leading-none gap-[3px]">
               <span className="font-black text-navy text-[15px] md:text-base tracking-tight leading-none">DEVTEAM</span>
-              <span className="text-gray-body text-[8px] md:text-[9px] tracking-[0.18em] font-semibold uppercase leading-none">
+              <span className="text-gray-body text-[8px] md:text-[9px] tracking-[0.2em] font-semibold uppercase leading-none">
                 Technology Solutions
               </span>
             </div>
@@ -99,62 +100,54 @@ export default function Navbar({ currentPage, navigate }: Props) {
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleLink('contact')}
-              className="hidden md:inline-flex items-center gap-1.5 bg-orange text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-orange-hover transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2"
+              onClick={openQuotation}
+              className="hidden md:inline-flex items-center gap-1.5 bg-orange text-white px-5 py-2.5 rounded-full text-[13px] font-bold hover:bg-orange-hover transition-colors duration-150 whitespace-nowrap"
             >
-              Get Started <span aria-hidden>+</span>
+              Request Quotation
             </button>
 
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden p-2 -mr-2 text-navy rounded-lg hover:bg-gray-100 transition-colors"
+              className="md:hidden p-2 -mr-1 text-navy rounded-xl hover:bg-gray-100 transition-colors"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               aria-controls="mobile-menu"
             >
-              {open ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile menu drawer */}
+        {/* Mobile menu */}
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            open ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
+            open ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
           }`}
         >
-          <nav className="border-t border-line bg-white px-4 pb-6 pt-3 space-y-1" aria-label="Mobile navigation">
-            {NAV_LINKS.map(({ label, page, anchor }) => {
-              const active = currentPage === page && !anchor
-              return (
-                <button
-                  key={label}
-                  onClick={() => handleLink(page, anchor)}
-                  className={`w-full text-left py-3 px-3 rounded-xl text-base font-semibold transition-colors ${
-                    active ? 'text-orange bg-orange-pale' : 'text-navy hover:bg-gray-50'
-                  }`}
-                >
-                  {label}
-                </button>
-              )
-            })}
-            <div className="pt-3">
-              <button
-                onClick={() => handleLink('contact')}
-                className="w-full bg-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-hover transition-colors"
-              >
-                Get Started +
-              </button>
+          <nav className="border-t border-line bg-white px-4 pb-6 pt-3" aria-label="Mobile navigation">
+            <div className="space-y-1 mb-4">
+              {NAV_LINKS.map(({ label, page, anchor }) => {
+                const active = currentPage === page && !anchor
+                return (
+                  <button
+                    key={label}
+                    onClick={() => handleLink(page, anchor)}
+                    className={`w-full text-left py-3 px-3 rounded-xl text-[15px] font-semibold transition-colors ${
+                      active ? 'text-orange bg-orange-pale' : 'text-navy hover:bg-gray-50'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
             </div>
+            <button
+              onClick={() => { setOpen(false); openQuotation() }}
+              className="w-full bg-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-hover transition-colors"
+            >
+              Request Quotation
+            </button>
           </nav>
         </div>
       </header>

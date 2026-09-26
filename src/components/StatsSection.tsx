@@ -1,7 +1,6 @@
-interface Stat {
-  value: string
-  label: string
-}
+import AnimateIn from './AnimateIn'
+
+interface Stat { value: string; label: string }
 
 interface Props {
   stats?: Stat[]
@@ -20,17 +19,15 @@ export default function StatsSection({ stats = DEFAULT_STATS, dark = false }: Pr
     <section className={`py-14 md:py-20 ${dark ? 'bg-navy' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-          {stats.map(({ value, label }) => (
-            <div key={label} className="text-center">
-              <p
-                className={`font-black text-4xl md:text-5xl lg:text-6xl leading-none mb-2 ${
-                  dark ? 'text-white' : 'text-navy'
-                }`}
-              >
+          {stats.map(({ value, label }, i) => (
+            <AnimateIn key={label} delay={i * 80} className="text-center">
+              <p className={`font-black text-4xl md:text-5xl lg:text-6xl leading-none mb-2 ${dark ? 'text-white' : 'text-navy'}`}>
                 {value}
               </p>
-              <p className={`text-sm font-medium ${dark ? 'text-white/50' : 'text-gray-body'}`}>{label}</p>
-            </div>
+              <p className={`text-sm font-medium ${dark ? 'text-white/45' : 'text-gray-body'}`}>
+                {label}
+              </p>
+            </AnimateIn>
           ))}
         </div>
       </div>

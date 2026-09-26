@@ -1,28 +1,19 @@
 import { useState } from 'react'
+import {
+  ChevronLeft, ChevronRight,
+  Smartphone, Flame, Server, Database, GitBranch,
+  UtensilsCrossed, Navigation, CreditCard, LayoutDashboard, Bell,
+  CheckCircle2, Zap, Shield, TrendingUp,
+} from 'lucide-react'
 import type { NavProps } from '../App'
+import AnimateIn from '../components/AnimateIn'
 import SectionLabel from '../components/SectionLabel'
 import CTABanner from '../components/CTABanner'
 import { PROJECTS } from '../data/projects'
 
-interface Props extends NavProps {
-  project: string
-}
+interface Props extends NavProps { project: string }
 
-const CASE_STUDY_DATA: Record<string, {
-  category: string
-  title: string
-  description: string
-  heroImage: string
-  platform: string
-  industry: string
-  duration: string
-  overview: string
-  goals: string[]
-  features: { icon: string; title: string; description: string }[]
-  technologies: { name: string; role: string; icon: string }[]
-  gallery: { src: string; caption: string }[]
-  results: { value: string; label: string }[]
-}> = {
+const CASE_STUDY_DATA = {
   default: {
     category: 'Mobile App Development',
     title: 'Food Delivery Mobile App',
@@ -33,122 +24,88 @@ const CASE_STUDY_DATA: Record<string, {
     industry: 'Food & Beverage',
     duration: '3 Months',
     overview:
-      "We engineered a performant mobile application that simplifies the lifecycle of ordering local dishes and quick snacks. The app maps nearby culinary options cleanly, integrates custom checkout logic, and synchronises real-time status updates from the kitchen range straight to the diner's doorstep.",
+      "We engineered a performant mobile application that simplifies the lifecycle of ordering local dishes and quick snacks. The app maps nearby culinary options cleanly, integrates custom checkout logic, and synchronises real-time status updates from the kitchen straight to the diner's doorstep.",
     goals: [
       'Provide a seamless and intuitive food ordering experience',
-      'Enable real-time order tracking and notifications',
+      'Enable real-time order tracking and push notifications',
       'Support multiple payment options securely',
       'Help restaurants manage orders and menus efficiently',
     ],
     features: [
-      {
-        icon: '🍽️',
-        title: 'Easy Food Ordering',
-        description: 'Browse local restaurants, configure specific dishes, and place checkout actions within seconds.',
-      },
-      {
-        icon: '📍',
-        title: 'Real-Time Tracking',
-        description: 'Keep track of dispatch riders in real-time from active preparation through route transit.',
-      },
-      {
-        icon: '💳',
-        title: 'Secure Payments',
-        description: 'Pay with localised checkout pathways, wallets, or structured cash-on-delivery systems safely.',
-      },
-      {
-        icon: '📊',
-        title: 'User & Restaurant Dashboards',
-        description: 'Separate user portals enable smooth analytics and live menu alterations for quick management.',
-      },
-      {
-        icon: '🔔',
-        title: 'Push Notifications',
-        description: 'Stay fully up to date with customised automated alert triggers regarding daily meals.',
-      },
+      { Icon: UtensilsCrossed, title: 'Easy Food Ordering', description: 'Browse local restaurants, configure specific dishes, and place checkout actions within seconds.' },
+      { Icon: Navigation, title: 'Real-Time Tracking', description: 'Keep track of dispatch riders in real-time from active preparation through route transit.' },
+      { Icon: CreditCard, title: 'Secure Payments', description: 'Pay with localised checkout pathways, wallets, or structured cash-on-delivery systems safely.' },
+      { Icon: LayoutDashboard, title: 'User & Restaurant Dashboards', description: 'Separate portals enable smooth analytics and live menu alterations for quick management.' },
+      { Icon: Bell, title: 'Push Notifications', description: 'Stay up to date with customised automated alert triggers regarding daily meals and promotions.' },
     ],
     technologies: [
-      { name: 'Flutter', role: 'Mobile App', icon: '📱' },
-      { name: 'Firebase', role: 'Backend', icon: '🔥' },
-      { name: 'Node.js', role: 'API Gateway', icon: '⚙️' },
-      { name: 'MongoDB', role: 'Database', icon: '🍃' },
-      { name: 'Git', role: 'Version Control', icon: '🔀' },
+      { name: 'Flutter', role: 'Mobile App', Icon: Smartphone },
+      { name: 'Firebase', role: 'Backend', Icon: Flame },
+      { name: 'Node.js', role: 'API Gateway', Icon: Server },
+      { name: 'MongoDB', role: 'Database', Icon: Database },
+      { name: 'Git', role: 'Version Control', Icon: GitBranch },
     ],
     gallery: [
-      { src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop&auto=format', caption: 'Splash & Onboarding' },
-      { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop&auto=format', caption: 'Home Feed Catalog' },
-      { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop&auto=format', caption: 'Restaurant Details' },
-      { src: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&auto=format', caption: 'Cart Configuration' },
-      { src: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&auto=format', caption: 'Live Order Tracking' },
-      { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&auto=format', caption: 'Order Confirmed' },
+      { src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=360&h=760&fit=crop&crop=center&auto=format', caption: 'Splash & Onboarding' },
+      { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=360&h=760&fit=crop&crop=center&auto=format', caption: 'Home Feed Catalog' },
+      { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=360&h=760&fit=crop&crop=center&auto=format', caption: 'Restaurant Details' },
+      { src: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=360&h=760&fit=crop&crop=center&auto=format', caption: 'Cart Configuration' },
+      { src: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=360&h=760&fit=crop&crop=center&auto=format', caption: 'Live Order Tracking' },
+      { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=360&h=760&fit=crop&crop=face&auto=format', caption: 'Order Confirmed' },
     ],
     results: [
       { value: '98%', label: 'Client Satisfaction' },
-      { value: '2.4s', label: 'Avg Load Time' },
+      { value: '2.4s', label: 'Average Load Time' },
       { value: '50k+', label: 'App Downloads' },
-      { value: '3mo', label: 'Delivered On Time' },
+      { value: '3 mo', label: 'Delivered On Schedule' },
     ],
   },
 }
 
-export default function CaseStudy({ navigate, project }: Props) {
-  const data = CASE_STUDY_DATA[project] ?? CASE_STUDY_DATA.default
+export default function CaseStudy({ navigate, project, openQuotation }: Props) {
+  const data = CASE_STUDY_DATA[project as keyof typeof CASE_STUDY_DATA] ?? CASE_STUDY_DATA.default
   const projectData = PROJECTS.find((p) => p.id === project)
-  const [galleryIndex, setGalleryIndex] = useState(0)
+  const [activeShot, setActiveShot] = useState(0)
 
   return (
     <>
-      {/* ── BREADCRUMB + HERO ────────────────────────── */}
+      {/* ── HERO ─────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-orange-pale">
-        {/* Blobs */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div
-            className="absolute -top-16 -right-16 w-[360px] h-[360px] rounded-full opacity-40"
-            style={{ background: 'radial-gradient(circle, #F65A0030 0%, transparent 70%)' }}
+            className="absolute -top-16 -right-16 w-[360px] h-[360px] rounded-full opacity-30"
+            style={{ background: 'radial-gradient(circle, #F65A00 0%, transparent 70%)' }}
           />
         </div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 md:pb-24">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm mb-8 flex-wrap" aria-label="Breadcrumb">
-            <button
-              onClick={() => navigate('home')}
-              className="text-gray-body hover:text-orange transition-colors"
-            >
-              Home
-            </button>
-            <span className="text-gray-body" aria-hidden>›</span>
-            <button
-              onClick={() => navigate('portfolio')}
-              className="text-gray-body hover:text-orange transition-colors"
-            >
-              Portfolio
-            </button>
-            <span className="text-gray-body" aria-hidden>›</span>
+          <nav className="flex items-center gap-2 text-sm mb-10 flex-wrap" aria-label="Breadcrumb">
+            <button onClick={() => navigate('home')} className="text-gray-body hover:text-orange transition-colors">Home</button>
+            <span className="text-gray-body/40" aria-hidden>›</span>
+            <button onClick={() => navigate('portfolio')} className="text-gray-body hover:text-orange transition-colors">Portfolio</button>
+            <span className="text-gray-body/40" aria-hidden>›</span>
             <span className="text-orange font-medium">{projectData?.title ?? data.title}</span>
           </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left */}
-            <div>
-              <div className="inline-flex items-center gap-2 bg-orange/10 text-orange px-3 py-1.5 rounded-full mb-5">
-                <span className="font-bold text-xs uppercase tracking-wider">{data.category}</span>
+            <AnimateIn>
+              <div className="inline-flex items-center gap-2 bg-orange/10 text-orange px-3.5 py-1.5 rounded-full mb-5">
+                <span className="font-bold text-[10px] uppercase tracking-[0.18em]">{data.category}</span>
               </div>
-
               <h1 className="text-4xl sm:text-5xl font-black text-navy leading-tight mb-4">
                 {projectData?.title ?? data.title}
               </h1>
-              <p className="text-gray-body leading-relaxed mb-8 max-w-md">{data.description}</p>
-
-              {/* Meta */}
+              <p className="text-gray-body leading-relaxed mb-8 text-[15px] max-w-md">{data.description}</p>
               <div className="flex flex-wrap gap-6">
                 {[
-                  { label: 'Platform', value: data.platform, icon: '📱' },
-                  { label: 'Industry', value: data.industry, icon: '🏢' },
-                  { label: 'Duration', value: data.duration, icon: '⏱️' },
-                ].map(({ label, value, icon }) => (
+                  { Icon: Smartphone, label: 'Platform', value: data.platform },
+                  { Icon: LayoutDashboard, label: 'Industry', value: data.industry },
+                  { Icon: TrendingUp, label: 'Duration', value: data.duration },
+                ].map(({ Icon, label, value }) => (
                   <div key={label} className="flex items-center gap-2.5">
-                    <span className="text-orange text-base" aria-hidden>{icon}</span>
+                    <div className="w-9 h-9 bg-orange/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-4 h-4 text-orange" />
+                    </div>
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-wider text-gray-body">{label}</p>
                       <p className="font-bold text-navy text-sm">{value}</p>
@@ -156,10 +113,9 @@ export default function CaseStudy({ navigate, project }: Props) {
                   </div>
                 ))}
               </div>
-            </div>
+            </AnimateIn>
 
-            {/* Right: hero image */}
-            <div className="rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
+            <AnimateIn from="right" delay={100} className="rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
               <img
                 src={projectData?.image ?? data.heroImage}
                 alt={projectData?.title ?? data.title}
@@ -167,7 +123,7 @@ export default function CaseStudy({ navigate, project }: Props) {
                 width={700}
                 height={490}
               />
-            </div>
+            </AnimateIn>
           </div>
         </div>
       </section>
@@ -176,54 +132,48 @@ export default function CaseStudy({ navigate, project }: Props) {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Overview */}
-            <div>
+            <AnimateIn>
               <SectionLabel text="Project Overview" className="mb-5" />
               <h2 className="text-3xl md:text-4xl font-black text-navy mb-5 leading-tight">
-                Building a Seamless {projectData?.title ?? 'Product'} Experience
+                Building a Seamless {projectData?.category ?? 'Product'} Experience
               </h2>
-              <p className="text-gray-body leading-relaxed mb-8">{data.overview}</p>
+              <p className="text-gray-body leading-relaxed mb-8 text-[15px]">{data.overview}</p>
 
               {/* Goals card */}
-              <div className="bg-orange-pale border border-line rounded-2xl p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 bg-orange rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+              <div className="bg-orange-pale border border-orange/15 rounded-2xl p-6">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-8 bg-orange rounded-xl flex items-center justify-center">
+                    <CheckCircle2 className="w-4 h-4 text-white" />
                   </div>
                   <h3 className="font-black text-navy text-base">Project Goals</h3>
                 </div>
-                <ul className="space-y-3">
+                <ul className="space-y-3.5">
                   {data.goals.map((goal) => (
                     <li key={goal} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 text-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
+                      <CheckCircle2 className="w-4 h-4 text-orange mt-0.5 flex-shrink-0" />
                       <span className="text-gray-body text-sm leading-relaxed">{goal}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </AnimateIn>
 
-            {/* Key Features */}
-            <div>
+            <AnimateIn from="right" delay={100}>
               <h3 className="font-black text-navy text-xl mb-6">Key Features</h3>
               <div className="space-y-5">
-                {data.features.map((f) => (
-                  <div key={f.title} className="flex gap-4">
-                    <div className="w-10 h-10 bg-orange/10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">
-                      {f.icon}
+                {data.features.map(({ Icon, title, description }) => (
+                  <div key={title} className="flex gap-4">
+                    <div className="w-10 h-10 bg-orange/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-orange" strokeWidth={1.75} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-navy text-sm mb-1">{f.title}</h4>
-                      <p className="text-gray-body text-sm leading-relaxed">{f.description}</p>
+                      <h4 className="font-bold text-navy text-[14px] mb-1">{title}</h4>
+                      <p className="text-gray-body text-sm leading-relaxed">{description}</p>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </AnimateIn>
           </div>
         </div>
       </section>
@@ -232,138 +182,169 @@ export default function CaseStudy({ navigate, project }: Props) {
       <section className="py-16 md:py-24 bg-gray-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <AnimateIn>
               <SectionLabel text="Technologies Used" className="mb-5" />
               <h2 className="text-3xl md:text-4xl font-black text-navy mb-5 leading-tight">
                 Built with Modern Technologies
               </h2>
-              <p className="text-gray-body leading-relaxed mb-8">
+              <p className="text-gray-body leading-relaxed mb-8 text-[15px]">
                 We utilise production-proven frameworks and scalable database layouts to keep latency extremely minimal.
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                {data.technologies.map((tech) => (
+              <div className="flex flex-wrap gap-3">
+                {data.technologies.map(({ name, role, Icon }) => (
                   <div
-                    key={tech.name}
+                    key={name}
                     className="flex flex-col items-center gap-2 bg-white border border-line rounded-2xl p-4 w-24 text-center hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                   >
-                    <span className="text-2xl" aria-hidden>{tech.icon}</span>
-                    <span className="font-black text-navy text-xs">{tech.name}</span>
-                    <span className="text-gray-body text-[10px] uppercase tracking-wider font-medium leading-tight">{tech.role}</span>
+                    <div className="w-9 h-9 bg-orange/10 rounded-xl flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-orange" strokeWidth={1.5} />
+                    </div>
+                    <span className="font-black text-navy text-xs">{name}</span>
+                    <span className="text-gray-body text-[9px] uppercase tracking-wider font-medium leading-tight">{role}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </AnimateIn>
 
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-200">
-                <img
-                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=700&h=480&fit=crop&auto=format"
-                  alt="Development environment and modern technology stack"
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                  width={700}
-                  height={480}
-                />
+            <AnimateIn from="right" delay={100}>
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=700&h=480&fit=crop&auto=format"
+                    alt="Modern development environment"
+                    loading="lazy"
+                    className="w-full h-auto object-cover"
+                    width={700}
+                    height={480}
+                  />
+                </div>
+                <div className="absolute top-4 right-4 bg-white rounded-xl shadow-md px-3.5 py-2.5 flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-orange" />
+                  <span className="font-bold text-navy text-xs">Fast Performance</span>
+                </div>
+                <div className="absolute bottom-14 right-4 bg-white rounded-xl shadow-md px-3.5 py-2.5 flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-orange" />
+                  <span className="font-bold text-navy text-xs">Secure & Reliable</span>
+                </div>
+                <div className="absolute bottom-4 left-4 bg-white rounded-xl shadow-md px-3.5 py-2.5 flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-orange" />
+                  <span className="font-bold text-navy text-xs">Scalable Architecture</span>
+                </div>
               </div>
-              {/* Floating badges */}
-              <div className="absolute top-4 right-4 bg-white rounded-xl shadow-md px-3.5 py-2.5 flex items-center gap-2">
-                <span className="text-orange text-base" aria-hidden>⚡</span>
-                <span className="font-bold text-navy text-xs">Fast Performance</span>
-              </div>
-              <div className="absolute bottom-12 right-4 bg-white rounded-xl shadow-md px-3.5 py-2.5 flex items-center gap-2">
-                <span className="text-orange text-base" aria-hidden>🛡️</span>
-                <span className="font-bold text-navy text-xs">Secure & Reliable</span>
-              </div>
-              <div className="absolute bottom-4 left-4 bg-white rounded-xl shadow-md px-3.5 py-2.5 flex items-center gap-2">
-                <span className="text-orange text-base" aria-hidden>📈</span>
-                <span className="font-bold text-navy text-xs">Scalable Architecture</span>
-              </div>
-            </div>
+            </AnimateIn>
           </div>
         </div>
       </section>
 
-      {/* ── GALLERY ──────────────────────────────────── */}
+      {/* ── APP STORE–STYLE GALLERY ───────────────────── */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
+          <AnimateIn className="flex items-center justify-between mb-10">
             <div>
               <SectionLabel text="Project Gallery" className="mb-3" />
               <h2 className="text-3xl font-black text-navy">App Screenshots</h2>
+              <p className="text-gray-body text-sm mt-1">
+                Swipe through the key screens of the delivered application.
+              </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-shrink-0">
               <button
-                onClick={() => setGalleryIndex((i) => Math.max(0, i - 1))}
-                disabled={galleryIndex === 0}
-                className="w-9 h-9 rounded-full border border-line flex items-center justify-center hover:border-orange hover:text-orange transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                onClick={() => setActiveShot((i) => Math.max(0, i - 1))}
+                disabled={activeShot === 0}
+                className="w-9 h-9 rounded-full border border-line flex items-center justify-center hover:border-orange hover:text-orange transition-colors disabled:opacity-30"
                 aria-label="Previous screenshot"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setGalleryIndex((i) => Math.min(data.gallery.length - 1, i + 1))}
-                disabled={galleryIndex >= data.gallery.length - 1}
-                className="w-9 h-9 rounded-full bg-orange flex items-center justify-center text-white hover:bg-orange-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                onClick={() => setActiveShot((i) => Math.min(data.gallery.length - 1, i + 1))}
+                disabled={activeShot >= data.gallery.length - 1}
+                className="w-9 h-9 rounded-full bg-orange flex items-center justify-center text-white hover:bg-orange-hover transition-colors disabled:opacity-30"
                 aria-label="Next screenshot"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight className="w-4 h-4" />
               </button>
+            </div>
+          </AnimateIn>
+
+          {/*
+            App Store–style portrait screenshots
+            Aspect ratio 9:19 = portrait phone screen proportions
+          */}
+          <div className="overflow-x-auto scrollbar-none -mx-4 px-4 sm:-mx-0 sm:px-0">
+            <div className="flex gap-3 md:gap-4 pb-4 min-w-max sm:min-w-0 sm:justify-start">
+              {data.gallery.map((item, i) => (
+                <button
+                  key={item.caption}
+                  onClick={() => setActiveShot(i)}
+                  aria-label={`Screenshot: ${item.caption}`}
+                  aria-current={activeShot === i}
+                  className={`flex-shrink-0 flex flex-col gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 rounded-[20px] ${
+                    activeShot === i ? 'scale-105' : 'opacity-70 hover:opacity-100 hover:scale-102'
+                  } transition-all duration-200`}
+                >
+                  {/* Portrait phone screenshot — 9:19 aspect ratio */}
+                  <div
+                    className={`relative rounded-[20px] overflow-hidden bg-gray-900 shadow-md ring-2 transition-all duration-200 ${
+                      activeShot === i ? 'ring-orange shadow-lg' : 'ring-transparent'
+                    }`}
+                    style={{ width: '120px', aspectRatio: '9 / 19' }}
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.caption}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    {/* Subtle phone screen glare */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%)',
+                      }}
+                      aria-hidden
+                    />
+                  </div>
+                  <p className="text-[10px] font-semibold text-gray-body text-center w-[120px] truncate">
+                    {item.caption}
+                  </p>
+                </button>
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
-            {data.gallery.map((item, i) => (
-              <button
-                key={item.caption}
-                onClick={() => setGalleryIndex(i)}
-                className={`group rounded-xl overflow-hidden border-2 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-orange ${
-                  galleryIndex === i ? 'border-orange shadow-md' : 'border-transparent hover:border-orange/40'
-                }`}
-                aria-label={`View screenshot: ${item.caption}`}
-                aria-current={galleryIndex === i}
-              >
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
-                  <img
-                    src={item.src}
-                    alt={item.caption}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-[10px] font-semibold text-gray-body text-center py-1.5 px-1 truncate">{item.caption}</p>
-              </button>
-            ))}
-          </div>
-
-          {/* Enlarged view */}
-          {data.gallery[galleryIndex] && (
-            <div className="mt-6 rounded-2xl overflow-hidden shadow-lg bg-gray-100">
+          {/* Active screenshot full size */}
+          <AnimateIn className="mt-8">
+            <div className="relative rounded-2xl overflow-hidden bg-gray-100 shadow-md">
               <img
-                src={data.gallery[galleryIndex].src.replace('w=400&h=300', 'w=1200&h=700')}
-                alt={data.gallery[galleryIndex].caption}
-                className="w-full max-h-[480px] object-cover"
+                src={data.gallery[activeShot].src.replace('w=360&h=760', 'w=1400&h=700')}
+                alt={data.gallery[activeShot].caption}
+                className="w-full max-h-[440px] object-cover object-top"
               />
+              <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-black/20 to-transparent" aria-hidden />
+              <span className="absolute bottom-4 left-4 text-white font-bold text-sm">
+                {data.gallery[activeShot].caption}
+              </span>
             </div>
-          )}
+          </AnimateIn>
         </div>
       </section>
 
       {/* ── RESULTS ──────────────────────────────────── */}
       <section className="py-14 md:py-20 bg-orange-pale">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <SectionLabel text="Project Impact" className="mb-4 justify-center" center />
-          <h2 className="text-3xl md:text-4xl font-black text-navy mb-12">Results & Impact</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.results.map(({ value, label }) => (
-              <div key={label} className="bg-white rounded-2xl p-6 shadow-sm border border-line">
-                <p className="text-4xl md:text-5xl font-black text-orange mb-2">{value}</p>
-                <p className="text-gray-body text-sm font-medium">{label}</p>
-              </div>
+          <AnimateIn>
+            <SectionLabel text="Project Impact" center className="mb-4 justify-center" />
+            <h2 className="text-3xl md:text-4xl font-black text-navy mb-12">Results &amp; Impact</h2>
+          </AnimateIn>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+            {data.results.map(({ value, label }, i) => (
+              <AnimateIn key={label} delay={i * 80}>
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-line">
+                  <p className="text-4xl md:text-5xl font-black text-orange mb-2">{value}</p>
+                  <p className="text-gray-body text-sm font-medium">{label}</p>
+                </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
@@ -373,9 +354,9 @@ export default function CaseStudy({ navigate, project }: Props) {
       <CTABanner
         label="Have a Project in Mind?"
         title="Let's Build Something Amazing Together"
-        description="Turn your custom ideas into performant mobile apps and web tools. Talk with our senior engineers and digital product designers today."
-        buttonText="Start Your Project"
-        onButtonClick={() => navigate('contact')}
+        description="Turn your ideas into a high-performance mobile app or web platform. Talk with our senior engineers today."
+        buttonText="Request Quotation"
+        onButtonClick={openQuotation}
       />
     </>
   )
