@@ -1,13 +1,20 @@
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
-import AnimateIn from './AnimateIn'
-import SectionLabel from './SectionLabel'
+import { useState } from "react"
+
+import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+
+import AnimateIn from "./AnimateIn"
+
+import SectionLabel from "./SectionLabel"
 
 export interface Testimonial {
   quote: string
+
   name: string
+
   role: string
+
   avatar: string
+
   rating?: number
 }
 
@@ -15,36 +22,60 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "Devteam built our complete logistics and mobile ordering system on schedule. Their technical competence, proactive security practices, and deep engineering capabilities are truly world-class.",
-    name: 'Chinedu Okafor',
-    role: 'CTO, FreshMart',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format',
+
+    name: "Chinedu Okafor",
+
+    role: "CTO, FreshMart",
+
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format",
+
     rating: 5,
   },
+
   {
     quote:
       "Our custom e-commerce platform built by Devteam has transformed how we sell. Fast checkout flows, gorgeous visuals, and zero downtime since launching last year.",
-    name: 'Amara Bello',
-    role: 'Founder, Glow Skincare',
-    avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&h=80&fit=crop&crop=face&auto=format',
+
+    name: "Amara Bello",
+
+    role: "Founder, Glow Skincare",
+
+    avatar:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&h=80&fit=crop&crop=face&auto=format",
+
     rating: 5,
   },
+
   {
     quote:
       "When you build financial tech products, stability is key. Devteam delivered a secure, lightning-fast cross-border payments app that scaled effortlessly to thousands of active users.",
-    name: 'Tunde Adebayo',
-    role: 'CEO, TransferGo NG',
-    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&auto=format',
+
+    name: "Tunde Adebayo",
+
+    role: "CEO, TransferGo NG",
+
+    avatar:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&auto=format",
+
     rating: 5,
   },
 ]
 
-interface Props { testimonials?: Testimonial[] }
+interface Props {
+  testimonials?: Testimonial[]
+}
 
 function Stars({ count = 5 }: { count?: number }) {
   return (
     <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className={`w-4 h-4 ${i < count ? 'text-orange fill-orange' : 'text-line fill-line'}`} />
+        <Star
+          key={i}
+          className={`w-4 h-4 ${
+            i < count ? "text-orange fill-orange" : "text-line fill-line"
+          }`}
+        />
       ))}
     </div>
   )
@@ -75,7 +106,9 @@ function Card({ t }: { t: Testimonial }) {
   )
 }
 
-export default function TestimonialsSection({ testimonials = DEFAULT_TESTIMONIALS }: Props) {
+export default function TestimonialsSection({
+  testimonials = DEFAULT_TESTIMONIALS,
+}: Props) {
   const [active, setActive] = useState(0)
 
   return (
@@ -88,7 +121,8 @@ export default function TestimonialsSection({ testimonials = DEFAULT_TESTIMONIAL
               What Our Clients Say
             </h2>
             <p className="hidden sm:block text-gray-body text-sm leading-relaxed max-w-xs text-right">
-              Testimonials from pioneering startups and established enterprises across Africa and beyond.
+              Testimonials from pioneering startups and established enterprises
+              across Africa and beyond.
             </p>
           </div>
         </AnimateIn>
@@ -112,7 +146,7 @@ export default function TestimonialsSection({ testimonials = DEFAULT_TESTIMONIAL
                   key={i}
                   onClick={() => setActive(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    i === active ? 'bg-orange w-6' : 'bg-line w-2'
+                    i === active ? "bg-orange w-6" : "bg-line w-2"
                   }`}
                   aria-label={`Testimonial ${i + 1}`}
                 />
@@ -120,7 +154,11 @@ export default function TestimonialsSection({ testimonials = DEFAULT_TESTIMONIAL
             </div>
             <div className="flex gap-2">
               <button
-                onClick={() => setActive((a) => (a - 1 + testimonials.length) % testimonials.length)}
+                onClick={() =>
+                  setActive(
+                    (a) => (a - 1 + testimonials.length) % testimonials.length,
+                  )
+                }
                 className="w-9 h-9 rounded-full border border-line flex items-center justify-center hover:border-orange hover:text-orange transition-colors"
                 aria-label="Previous"
               >
