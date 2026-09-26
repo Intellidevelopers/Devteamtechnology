@@ -95,7 +95,7 @@ export default function Navbar({
             <img
               src={logoImg}
               alt="Devteam Technology Solutions"
-              className="w-40 sm:w-46 h-auto"
+              className="w-40 sm:w-48 h-auto"
             />
           </button>
 
