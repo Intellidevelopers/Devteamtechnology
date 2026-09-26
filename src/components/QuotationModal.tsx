@@ -137,12 +137,11 @@ export default function QuotationModal({ isOpen, onClose }: Props) {
         <div className="flex items-start justify-between px-7 pt-7 pb-5 border-b border-line flex-shrink-0">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <div className="w-7 h-7 bg-orange rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-sm leading-none">D</span>
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gray-body">
-                Devteam Technology Solutions
-              </span>
+              <img
+                src="/cop.png"
+                alt="Devteam Technology Solutions"
+                className="w-40 sm:w-46 h-auto"
+              />
             </div>
             <h2 id="modal-title" className="font-black text-navy text-2xl">Request a Quotation</h2>
             <p className="text-gray-body text-sm mt-0.5">

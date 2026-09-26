@@ -45,7 +45,7 @@ export default function Navbar({ currentPage, navigate, openQuotation }: NavProp
             Innovate · Build · Grow
           </span>
           <span className="text-white/40 text-[11px] tracking-wide">
-            Premium Software Engineering Agency based in Lagos, Nigeria
+            Premium Software Engineering Agency based in Ilorin Kwara, Nigeria
             <span className="mx-2 text-white/20">·</span>
             <span className="text-white/60 font-semibold">RC&#8209;9764498</span>
           </span>
@@ -65,15 +65,11 @@ export default function Navbar({ currentPage, navigate, openQuotation }: NavProp
             className="flex items-center gap-2.5 flex-shrink-0 min-w-0"
             aria-label="Devteam home"
           >
-            <div className="w-9 h-9 md:w-10 md:h-10 bg-orange rounded-xl flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-black text-lg md:text-xl leading-none select-none">D</span>
-            </div>
-            <div className="flex flex-col items-start leading-none gap-[3px]">
-              <span className="font-black text-navy text-[15px] md:text-base tracking-tight leading-none">DEVTEAM</span>
-              <span className="text-gray-body text-[8px] md:text-[9px] tracking-[0.2em] font-semibold uppercase leading-none">
-                Technology Solutions
-              </span>
-            </div>
+            <img
+              src="/logo.png"
+              alt="Devteam Technology Solutions"
+              className="w-40 sm:w-46 h-auto"
+            />
           </button>
 
           {/* Desktop nav */}

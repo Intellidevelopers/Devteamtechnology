@@ -23,8 +23,8 @@ const SOCIAL = [
 
 const CONTACT = [
   { Icon: Phone, text: '08109263500', href: 'tel:08109263500' },
-  { Icon: Mail, text: 'info@devteam-technology.com', href: 'mailto:info@devteam-technology.com' },
-  { Icon: MapPin, text: 'Lagos, Nigeria', href: undefined },
+  { Icon: Mail, text: 'devteamtechnologysolutions@gmail.com', href: 'mailto:devteamtechnologysolutions@gmail.com' },
+  { Icon: MapPin, text: 'Ilorin Kwara, Nigeria', href: undefined },
 ]
 
 export default function Footer({ navigate }: Props) {
@@ -39,13 +39,11 @@ export default function Footer({ navigate }: Props) {
               className="flex items-center gap-2.5 mb-5 group"
               aria-label="Devteam home"
             >
-              <div className="w-10 h-10 bg-orange rounded-xl flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-black text-xl leading-none">D</span>
-              </div>
-              <div className="flex flex-col items-start leading-none gap-[3px]">
-                <span className="font-black text-white text-base tracking-tight group-hover:text-orange transition-colors">DEVTEAM</span>
-                <span className="text-white/40 text-[9px] tracking-[0.2em] font-semibold uppercase">Technology Solutions</span>
-              </div>
+              <img
+                src="/lightlogo.png"
+                alt="Devteam Technology Solutions"
+                className="w-40 sm:w-46 h-auto"
+              />
             </button>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Ideas › Apps › Websites › Impact. We bridge complex engineering with breathtaking UI design to help high-growth companies unlock real leverage.

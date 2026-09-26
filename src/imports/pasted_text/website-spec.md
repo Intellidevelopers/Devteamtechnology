@@ -14,8 +14,8 @@ Services:
 
 CONTACT:
 Phone: 08109263500
-Email: info@devteam-technology.com
-Location: Lagos, Nigeria
+Email: devteamtechnologysolutions@gmail.com
+Location: Ilorin Kwara, Nigeria
 Website: www.devteamtechnology.com
 Social handle: @devteam_techsolutions
 
@@ -145,7 +145,7 @@ A clean contact form with:
 - “Send Message” button
 
 Also include:
-- Map/location section for Lagos, Nigeria
+- Map/location section for Ilorin Kwara, Nigeria
 - FAQ section
 - Large orange CTA
 - Footer

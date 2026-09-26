@@ -117,8 +117,8 @@ export default function Contact({ navigate, openQuotation }: NavProps) {
               <div className="space-y-5 mb-10">
                 {[
                   { Icon: Phone, label: 'Phone', value: '08109263500', href: 'tel:08109263500' },
-                  { Icon: Mail, label: 'Email', value: 'info@devteam-technology.com', href: 'mailto:info@devteam-technology.com' },
-                  { Icon: MapPin, label: 'Headquarters', value: 'Lagos, Nigeria', href: undefined },
+                  { Icon: Mail, label: 'Email', value: 'devteamtechnologysolutions@gmail.com', href: 'mailto:devteamtechnologysolutions@gmail.com' },
+                  { Icon: MapPin, label: 'Headquarters', value: 'Ilorin Kwara, Nigeria', href: undefined },
                   { Icon: Clock, label: 'Business Hours', value: 'Monday – Friday, 9:00 AM – 6:00 PM WAT', href: undefined },
                 ].map(({ Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">
@@ -217,9 +217,9 @@ export default function Contact({ navigate, openQuotation }: NavProps) {
             </div>
             <ul className="space-y-3">
               {[
-                { Icon: MapPin, text: 'Lagos, Nigeria' },
+                { Icon: MapPin, text: 'Ilorin Kwara, Nigeria' },
                 { Icon: Phone, text: '08109263500' },
-                { Icon: Mail, text: 'info@devteam-technology.com' },
+                { Icon: Mail, text: 'devteamtechnologysolutions@gmail.com' },
               ].map(({ Icon, text }) => (
                 <li key={text} className="flex items-center gap-3 text-sm text-gray-body">
                   <Icon className="w-4 h-4 text-orange flex-shrink-0" strokeWidth={1.75} />
@@ -232,7 +232,7 @@ export default function Contact({ navigate, openQuotation }: NavProps) {
           <div className="rounded-2xl overflow-hidden bg-gray-200 h-48 md:h-56 flex items-center justify-center">
             <div className="text-center text-gray-body">
               <MapPin className="w-10 h-10 mx-auto mb-2 text-orange/30" strokeWidth={1} />
-              <p className="text-sm font-medium">Lagos, Nigeria</p>
+              <p className="text-sm font-medium">Ilorin Kwara, Nigeria</p>
             </div>
           </div>
         </div>

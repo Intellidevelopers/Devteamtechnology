@@ -129,7 +129,7 @@ export default function About({ navigate, openQuotation }: NavProps & { openQuot
               Designers&nbsp;&amp; Problem&nbsp;Solvers.
             </h1>
             <p className="text-gray-body leading-relaxed max-w-xl mb-10">
-              Devteam Technology Solutions is a premier digital engineering studio based in Lagos, Nigeria. We partner with ambitious companies across Africa and beyond to build mobile apps, web platforms, and digital experiences that drive real business outcomes.
+              Devteam Technology Solutions is a premier digital engineering studio based in Ilorin Kwara, Nigeria. We partner with ambitious companies across Africa and beyond to build mobile apps, web platforms, and digital experiences that drive real business outcomes.
             </p>
             <div className="flex flex-wrap gap-3">
               <button
@@ -168,7 +168,7 @@ export default function About({ navigate, openQuotation }: NavProps & { openQuot
                 <div className="absolute -bottom-5 -right-3 sm:-right-6 bg-white rounded-2xl shadow-lg px-5 py-4">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-gray-body">Founded</p>
                   <p className="font-black text-navy text-2xl">2019</p>
-                  <p className="text-orange text-xs font-semibold">Lagos, Nigeria</p>
+                  <p className="text-orange text-xs font-semibold">Ilorin Kwara, Nigeria</p>
                 </div>
               </div>
             </AnimateIn>
